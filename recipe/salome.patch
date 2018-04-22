@@ -1,3 +1,9 @@
+commit d9f82838a389b34a81e03547b2c10ae9d026e6ed
+Author: Trevor Laughlin <trevor@laughlinresearch.com>
+Date:   Mon Oct 30 21:34:25 2017 -0400
+
+    Manually apply netgen53ForSalome.patch
+
 diff --git a/libsrc/meshing/findip.hpp b/libsrc/meshing/findip.hpp
 index f5d8e42..31d5a4c 100644
 --- a/libsrc/meshing/findip.hpp
@@ -942,20 +948,6 @@ index e2348ec..71953b8 100644
 +#include <iomanip>
  #include <cstdlib>
  // #include "SALOME_Log.hxx"
- 
-diff --git a/nglib/nglib.cpp b/nglib/nglib.cpp
-index 5fea184..2c8883b 100644
---- a/nglib/nglib.cpp
-+++ b/nglib/nglib.cpp
-@@ -91,7 +91,8 @@ namespace nglib
-    // Clean-up functions before ending usage of nglib
-    DLL_HEADER void Ng_Exit ()
-    {
--      ;
-+      delete testout;
-+      testout = 0;
-    }
- 
  
 diff --git a/nglib/nglib.h b/nglib/nglib.h
 index 8a78da0..2001a2c 100644
