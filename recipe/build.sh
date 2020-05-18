@@ -1,8 +1,10 @@
 mkdir build -p
 cd build
 
+
 if [[ ${FEATURE_DEBUG} = 1 ]]; then
       BUILD_TYPE="Debug"
+      echo "#! building debug package !#"
 else
       BUILD_TYPE="Release"
 fi
