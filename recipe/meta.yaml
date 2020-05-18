@@ -1,6 +1,8 @@
 {% set name = "netgen" %}
 {% set version = "6.2.2004" %}
 {% set sha256 = "a41111470baf65090066df85957aea8afdcb568a18f1915946228f3918d91928" %}
+{% set build_number = 1 %}
+{% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 
 package:
@@ -16,7 +18,7 @@ source:
     - dll_header.patch
 
 build:
-  number: 1
+  number: {{ build_number }}
   skip: true  # [py27]
 
 requirements:

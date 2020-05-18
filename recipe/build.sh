@@ -1,17 +1,23 @@
 mkdir build -p
 cd build
 
+if [[ ${FEATURE_DEBUG} = 1 ]]; then
+      BUILD_TYPE="Debug"
+else
+      BUILD_TYPE="Release"
+fi
+
 
 cmake -G "Ninja" \
-      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_BUILD_TYPE:STRING=${BUILD_TYPE} \
       -D CMAKE_INSTALL_PREFIX:FILEPATH=$PREFIX \
       -D CMAKE_PREFIX_PATH:FILEPATH=$PREFIX \
       -D NG_INSTALL_DIR_INCLUDE:FILEPATH=$PREFIX/include/netgen \
       -D NG_INSTALL_DIR_PYTHON:FILEPATH=${SP_DIR} \
       -D NG_INSTALL_DIR_BIN=bin \
       -D NG_INSTALL_DIR_LIB=lib \
-      -D NG_INSTALL_DIR_CMAKE:FILEPATH=lib/cmake/netgen \
       -D NG_INSTALL_DIR_RES=share \
+      -D NG_INSTALL_DIR_CMAKE:FILEPATH=lib/cmake/netgen \
       -D OCC_INCLUDE_DIR:FILEPATH=$PREFIX/include/opencascade \
       -D OCC_LIBRARY_DIR:FILEPATH=$PREFIX/lib \
       -D USE_NATIVE_ARCH:BOOL=OFF \
